@@ -10,13 +10,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    byebug
+    
     @user = User.find(params[:user_id])
-    @article = Article.create(article_params)
-    @article.user = @user
-    @article.save
-    redirect_to @article
-    #redirect_to user_path(@user)
+    @article = @user.articles.create(article_params)
+    redirect_to user_path(@user)
   end
 
   def edit

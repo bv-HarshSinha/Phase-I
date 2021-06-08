@@ -4,4 +4,6 @@
 <%= render 'articles/form' %>
 
 <h2>Articles</h2>
-<%= render @user.articles %>
+<% @user.articles.each do |article| %>
+<%= render 'articles/article' ,article: article %>
+<% end %>
