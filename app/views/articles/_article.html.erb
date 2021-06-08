@@ -1,6 +1,6 @@
 <p>
   <strong>Article Title:</strong>
-  <%= link_to article.title, user_article_path(user_id: @user.id, article_id: @article.id)%>
+  <%= link_to article.title, user_articles_path(article.id)%>
 </p>
 
 <p>

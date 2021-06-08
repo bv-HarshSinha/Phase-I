@@ -1,22 +1,12 @@
 <h1>Sign Up</h1>
-<%= form_with model: @user do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-    <% @user.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+<h1>Signup!</h1>
 
-  <div>
-    <%= form.label :email %><br>
-    <%= form.text_area :email %>
-    <% @user.errors.full_messages_for(:email).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+<%= form_for :user, url: '/users' do |f| %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  Name: <%= f.text_field :name %>
+  Email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password %>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.submit "Submit" %>
+
 <% end %>

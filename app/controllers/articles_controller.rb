@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :authorize
   def show
     @article = Article.find(params[:id])
   end
@@ -10,7 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    
+
     @user = User.find(params[:user_id])
     @article = @user.articles.create(article_params)
     redirect_to user_path(@user)
