@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
   root "users#index"
-  get '/signup' => 'user#new'
-  post '/users' => 'user#create'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  
+
   #get "show_article", to: "articles#show"
-  resources :users do
-    #collection do
-    #  get "articles"
-    resources :articles
+  resources :users
+  resources :articles
     #end
-  end
 end

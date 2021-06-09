@@ -1,20 +1,18 @@
 class ArticlesController < ApplicationController
-  before_filter :authorize
   def show
     @article = Article.find(params[:id])
   end
 
   def new
-    byebug
     @article = Article.new
-    byebug
   end
 
   def create
 
-    @user = User.find(params[:user_id])
-    @article = @user.articles.create(article_params)
-    redirect_to user_path(@user)
+    @article = Article.new(article_params)
+    @article.user = current_user
+    @article.save
+    redirect_to '/'
   end
 
   def edit
